@@ -63,9 +63,18 @@
           <div>
             <%= delivery.description %>
           </div>
-          <div class="late">
-            Supposed to arrive on <%= delivery.supposed_to_arrive_on %>
-          </div>
+
+          <!---->
+          <% if delivery.supposed_to_arrive_on < Time.now %>
+            <div class="late">
+              Supposed to arrive on <%= delivery.supposed_to_arrive_on %>
+            </div>
+          <% else %>
+            <div class="fine">
+              Supposed to arrive on <%= delivery.supposed_to_arrive_on %>
+            </div>            
+          <% end %>
+
           <div>
             <form action="/modify_delivery/<%=delivery.id%>" method="post">
               <input type="hidden" name="query_arrived" value="true">
