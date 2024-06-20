@@ -66,7 +66,7 @@
 
           <!---->
           <% if delivery.supposed_to_arrive_on < Time.now %>
-            <div class="late">
+            <div class="later">
               Supposed to arrive on <%= delivery.supposed_to_arrive_on %>
             </div>
           <% else %>
