@@ -8,9 +8,35 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="/css/my_styles.css">
   </head>
 
   <body>
+    <nav>
+      <% if current_user == nil %>
+        <a href="/users/sign_in">Sign in</a>
+        <a href="/users/sign_up">Sign up</a>
+      <% else %>
+        <a href="/">Delivery Tracker</a>
+        <a href="/users/edit">Edit profile</a>
+        <a href="/users/sign_out">Sign out</a>
+      <% end %>
+    </nav>
+
+    <hr>
+
+    <% if notice.present? %>
+      <div style="color: green">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div style="color: red">
+        <%= alert %>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
